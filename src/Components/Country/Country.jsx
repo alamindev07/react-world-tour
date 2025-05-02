@@ -64,7 +64,12 @@ const Country = ({ country }) => {
   };
 
   return (
-    <div className={`card ${visited ? bgcolor : ""}`}>
+    <div className={`card ${visited ? bgcolor : ""}`} style={{
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      padding: "1rem",
+      backgroundColor: "#fff",
+    }}>
       <div className="card-info">
         <h3>
           Country Name: <span style={{ color: "purple" }}>{name.common}</span>

@@ -27,7 +27,7 @@ function MainContent() {
      </div>
 
       {/* Flex Container for Text + Image */}
-      <div
+      <div 
         style={{
           display: "flex",
           justifyContent: "space-between",
