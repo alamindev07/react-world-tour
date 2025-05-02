@@ -59,3 +59,27 @@
 .bg-sky{
   background-color: rgb(133, 235, 31);
 }
+
+
+
+/* spinner style start */
+
+/* .spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  border: 6px solid #ccc;
+  border-top: 6px dotted #007bff;
+  border-bottom: 6px dotted #007bff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+
