@@ -5,14 +5,13 @@
 }
 
 
-
-
-
 .card {
+  border: 1px solid #ccc;
   padding: 1rem;
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff;
 }
 .card-info{
   flex: 1;
@@ -125,3 +124,47 @@
 
 
 
+/* style for mofal 2 flags */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  position: relative;
+}
+
+.modal-flag {
+  width: 100%;
+  max-width: 800px;
+  transition: transform 0.3s ease-out;
+}
+
+.modal-flag:hover {
+  transform: scale(1.2);
+}
+
+.close-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}

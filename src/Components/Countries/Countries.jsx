@@ -2,14 +2,12 @@ import React, { use, useState } from "react";
 import Country from "../Country/Country";
 import { FiSearch } from "react-icons/fi";
 
-const Countries = ({ promiseCountries }) => {
+const Countries = ({ promiseCountries, handleVisitedCountries }) => {
   const countries = use(promiseCountries);
   // console.log(countries)
 
   const [searchText, setSearchText] = useState("");
   // const [query, setQuery] = useState("");
-
-
 
   const matchedCountries = countries.filter((country) =>
     country.name.common.toLowerCase().includes(searchText.toLowerCase())
@@ -19,6 +17,8 @@ const Countries = ({ promiseCountries }) => {
     matchedCountries.length > 0 || searchText === ""
       ? matchedCountries
       : countries;
+
+
 
   return (
     <div>
@@ -65,7 +65,7 @@ const Countries = ({ promiseCountries }) => {
 
       <div className="card-grid">
         {filteredCountries.map((country) => (
-          <Country key={country.cca3} country={country} />
+          <Country handleVisitedCountries={handleVisitedCountries} key={country.cca3} country={country} />
         ))}
       </div>
     </div>

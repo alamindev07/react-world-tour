@@ -20,7 +20,7 @@ const customStyles = {
   },
 };
 
-const Country = ({ country }) => {
+const Country = ({ country, handleVisitedCountries }) => {
   const { name, capital } = country;
   // console.log(country);
   const bgClasses = ["bg-red"];
@@ -29,6 +29,9 @@ const Country = ({ country }) => {
   const [bgcolor, setBgcolor] = useState("");
 
   const [modalIsOpen, setmodalIsOpen] = useState(false);
+
+  // usestate for flag modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // const getRandomColor =()=>{
   //   const randomColor = `hsl(${Math.floor(Math.random() * bgClasses.length)}, 70%, 80%)`;
@@ -49,6 +52,9 @@ const Country = ({ country }) => {
       setBgcolor(randomColor);
     }
     setVisited(!visited);
+
+    handleVisitedCountries(country);
+
   };
 
   const openModal = () => {
@@ -64,12 +70,7 @@ const Country = ({ country }) => {
   };
 
   return (
-    <div className={`card ${visited ? bgcolor : ""}`} style={{
-      border: "1px solid #ccc",
-      borderRadius: "8px",
-      padding: "1rem",
-      backgroundColor: "#fff",
-    }}>
+    <div className={`card ${visited ? bgcolor : ""}`}  >
       <div className="card-info">
         <h3>
           Country Name: <span style={{ color: "purple" }}>{name.common}</span>
@@ -101,6 +102,9 @@ const Country = ({ country }) => {
           </button>
           {/* modal button */}
           <button style={{backgroundColor: "greenyellow"}} onClick={openModal}>Details</button>
+        </div>
+        <div style={{display: "flex", justifyContent: "center"}}>
+        <button onClick={() => setIsModalOpen(true)}>View Flag</button>
         </div>
       </div>
       {/* Country Details Modal */}
@@ -201,9 +205,28 @@ const Country = ({ country }) => {
             marginTop: "30px",
           }}
         >
-          <button style={{backgroundColor: "red"}} onClick={closeModal}>Close</button>
+          <button className="close-btn" onClick={closeModal}> ❌ Close</button>
         </div>
       </Modal>
+
+      {/* country flag modal */}
+
+      {isModalOpen && (
+        <div className="custom-modal" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content" >
+            <h2>{name.common}'s Flag</h2>
+            <img
+              src={country.flags.png}
+              alt={`Flag of ${name.common}`}
+              className="modal-flag"
+            />
+            <button className="close-btn" onClick={() => setIsModalOpen(false)}>
+              ❌ Close
+            </button>
+          </div>
+        </div>
+      )}
+ 
     </div>
   );
 };
