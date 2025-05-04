@@ -4,13 +4,13 @@
   padding: 2rem;
 }
 
-
 .card {
   border: 1px solid #ccc;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   background-color: #ecf6f7;
+  color: rgba(17, 9, 240, 0.677);
 }
 .card-info{
   flex: 1;
@@ -40,7 +40,7 @@
 }
 
 .bg-red{
-  background-color: red;
+  background-color: rgba(246, 18, 18, 0.712);
 }
 
 
@@ -57,6 +57,19 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .profile-img {
+    width: 120px;
+    height: 90px;
+  }
 }
 
 /* On mobile: stack in column */
@@ -105,19 +118,9 @@
 
 /* style for modal 1 country details */
 
- 
-
-
-
 /* Make modal content stack on small screens */
 @media (max-width: 768px) {
-  /* .modal-content {
-    flex-direction: row;
-    width: 60%;
-    height: 80%;
-    background-color: #e6f4f5 !important; 
-
-  } */
+ 
   .modal-content {
     display: flex;
     flex-wrap: wrap;
@@ -129,6 +132,7 @@
     max-height: 100vh;
     overflow: auto;
     background-color: #e6f4f5 !important; 
+    color: rgb(183, 29, 29);
   }
   
   .modal-info{
@@ -175,7 +179,7 @@
     overflow: auto;
     position: relative;
     background-color: #e6f4f5 !important; 
-
+    color: rgb(183, 29, 29);
   
   }
 
@@ -229,7 +233,8 @@
   overflow: auto;
   position: relative;
   background-color: #eaf7f8 !important; 
-  
+  color: rgb(183, 29, 29);
+
 }
 
 
@@ -276,7 +281,7 @@
 }
 
 .flag-modal-content {
-  background-color: steelblue;
+  background-color: #ecf6f7;
   padding: 1.5rem;
   border-radius: 10px;
   text-align: center;

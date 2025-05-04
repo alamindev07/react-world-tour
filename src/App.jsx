@@ -63,12 +63,7 @@ function MainContent() {
         <img
           src="/alamin.jpg"
           alt="Profile Image"
-          style={{
-            width: "150px",
-            height: "150px",
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
+          className="profile-img"
         />
       </div>
 
