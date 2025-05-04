@@ -18,17 +18,15 @@ function MainContent() {
     const isVisited = visitedCountries.some(
       (visited) => visited.cca3 === country.cca3
     );
-    if(isVisited){
+    if (isVisited) {
       const updateList = visitedCountries.filter(
         (visited) => visited.cca3 !== country.cca3
       );
       setVisitedCountries(updateList);
-    }
-    else{
-      setVisitedCountries([...visitedCountries, country])
+    } else {
+      setVisitedCountries([...visitedCountries, country]);
     }
   };
-
 
   return (
     <>
@@ -55,7 +53,7 @@ function MainContent() {
             If you click the visited button that country will be added here 😊
           </p>
           <h2>Visited countries:{visitedCountries.length}</h2>
-          <ol style={{ border: "1px solid purple", borderRadius: "4px"}}>
+          <ol style={{ border: "1px solid purple", borderRadius: "4px" }}>
             {visitedCountries.map((country) => (
               <li key={country.cca3}>{country.name.common}</li>
             ))}
@@ -63,7 +61,7 @@ function MainContent() {
         </div>
 
         <img
-          src="/src/assets/alamin.jpg" // ✅ Make sure the image path is correct
+          src="/alamin.jpg"
           alt="Profile Image"
           style={{
             width: "150px",
@@ -85,7 +83,7 @@ function MainContent() {
 function App() {
   return (
     <>
-      <Suspense 
+      <Suspense
         fallback={
           <div
             style={{

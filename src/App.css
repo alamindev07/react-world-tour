@@ -8,10 +8,9 @@
 .card {
   border: 1px solid #ccc;
   padding: 1rem;
-  background: white;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  background-color: #fff;
+  background-color: #ecf6f7;
 }
 .card-info{
   flex: 1;
@@ -51,27 +50,6 @@
 }
 
 
-
-/* spinner style start */
-
-/* .spinner {
-  margin: 100px auto;
-  width: 40px;
-  height: 40px;
-  border: 6px solid #ccc;
-  border-top: 6px dotted #007bff;
-  border-bottom: 6px dotted #007bff;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-} */
-/* header section responsive for all devices */
-
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -82,7 +60,8 @@
 }
 
 /* On mobile: stack in column */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
   .header-container {
     flex-direction: column-reverse;
     align-items: flex-center;
@@ -102,26 +81,184 @@
 }
 
 /* Mobile: 1 column */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card-grid {
     grid-template-columns: 1fr;
   }
 }
 
 /* Tablet: 2 columns */
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Desktop: 3 columns or more */
-@media (min-width: 901px) {
+@media (min-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+
+
+/* style for modal 1 country details */
+
+ 
+
+
+
+/* Make modal content stack on small screens */
+@media (max-width: 768px) {
+  /* .modal-content {
+    flex-direction: row;
+    width: 60%;
+    height: 80%;
+    background-color: #e6f4f5 !important; 
+
+  } */
+  .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 60%;
+    height: 80%;
+    padding: 1.5rem;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow: auto;
+    background-color: #e6f4f5 !important; 
+  }
+  
+  .modal-info{
+    flex: 1 1 100%;
+   text-align: left;
+  }
+ 
+
+  .modal-image img {
+    max-height: 200px;
+   
+  }
+  .img-and-btn-section{
+    position: relative;
+    padding: 20px;
+  }
+  .modal-image {
+    flex: 1 1 600%;
+    padding: 30px;
+    margin-bottom: 50px;
+  }
+  
+  
+  .modal-footer-btn-div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+   
+    
+  }
+  
+}
+/* Make modal content stack on medium screens */
+@media (min-width: 769px) and (max-width: 1024px)  {
+  .modal-content {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    width: 70%;
+    height: 80%;
+    padding: 1.5rem;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow: auto;
+    position: relative;
+    background-color: #e6f4f5 !important; 
+
+  
+  }
+
+  .modal-info {
+    flex: 1 1 60%;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .modal-image {
+    flex: 1 1 35%;
+ 
+   
+  }
+
+  .modal-image img {
+    max-height: 200px;
+   
+  }
+  
+  .img-and-btn-section{
+    position: relative;
+   
+  }
+  
+  
+  .modal-footer-btn-div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+  }
+  
+  
+  
+
+  
+}
+/* Desktops (1024px and above) */
+@media (min-width: 1024px) {
+ /* Modal main layout */
+ .modal-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 70%;
+  height: 80%;
+  padding: 1.5rem;
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  position: relative;
+  background-color: #eaf7f8 !important; 
+  
+}
+
+
+/* Info section */
+.modal-info {
+  flex: 1 1 60%;
+  text-align: left;
+  /* border: 1px solid red; */
+  border-radius: 20px;
+  padding: 10px;
+}
+
+/* Image section */
+.modal-image {
+  flex: 1 1 35%;
+  
+}
+.img-and-btn-section{
+  position: relative;
+}
+
+
+.modal-footer-btn-div {
+  position: absolute;
+  bottom: 15px; 
+  right: 20px;
+  
+}
+}
 
 
 /* style for mofal 2 flags */
@@ -138,8 +275,8 @@
   z-index: 9999;
 }
 
-.modal-content {
-  background-color: white;
+.flag-modal-content {
+  background-color: steelblue;
   padding: 1.5rem;
   border-radius: 10px;
   text-align: center;
@@ -152,7 +289,7 @@
 .modal-flag {
   width: 100%;
   max-width: 800px;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease;
 }
 
 .modal-flag:hover {

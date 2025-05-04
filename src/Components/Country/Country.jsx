@@ -4,21 +4,21 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    width: "100vh",
-    height: "95vh",
-    overflowY: "auto", // Prevents vertical scroll inside modal
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "GhostWhite",
-    padding: "20px",
-    zIndex: 1000,
-  },
-};
+// const customStyles = {
+//   content: {
+//     top: "50%",
+//     left: "50%",
+//     right: "auto",
+//     bottom: "auto",
+//     width: "100vh",
+//     height: "95vh",
+//     overflowY: "auto", // Prevents vertical scroll inside modal
+//     transform: "translate(-50%, -50%)",
+//     backgroundColor: "GhostWhite",
+//     padding: "20px",
+//     zIndex: 1000,
+//   },
+// };
 
 const Country = ({ country, handleVisitedCountries }) => {
   const { name, capital } = country;
@@ -54,7 +54,6 @@ const Country = ({ country, handleVisitedCountries }) => {
     setVisited(!visited);
 
     handleVisitedCountries(country);
-
   };
 
   const openModal = () => {
@@ -70,7 +69,7 @@ const Country = ({ country, handleVisitedCountries }) => {
   };
 
   return (
-    <div className={`card ${visited ? bgcolor : ""}`}  >
+    <div className={`card ${visited ? bgcolor : ""}`}>
       <div className="card-info">
         <h3>
           Country Name: <span style={{ color: "purple" }}>{name.common}</span>
@@ -91,7 +90,13 @@ const Country = ({ country, handleVisitedCountries }) => {
           <img src={country.flags.png} alt={`${name.common} flag`} />
         </div>
 
-        <div style={{display: "flex", justifyContent: "space-between", margin: "20px"}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "20px",
+          }}
+        >
           <button
             onClick={handleVisit}
             style={{
@@ -101,15 +106,25 @@ const Country = ({ country, handleVisitedCountries }) => {
             {visited ? "Visited" : "Not Visited"}
           </button>
           {/* modal button */}
-          <button style={{backgroundColor: "greenyellow"}} onClick={openModal}>Details</button>
+          <button
+            style={{ backgroundColor: "greenyellow" }}
+            onClick={openModal}
+          >
+            Details
+          </button>
         </div>
-        <div style={{display: "flex", justifyContent: "center"}}>
-        <button onClick={() => setIsModalOpen(true)}>View Flag</button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button
+            style={{ backgroundColor: "skyblue" }}
+            onClick={() => setIsModalOpen(true)}
+          >
+            View Flag
+          </button>
         </div>
       </div>
       {/* Country Details Modal */}
 
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Country Details"
@@ -123,7 +138,7 @@ const Country = ({ country, handleVisitedCountries }) => {
             flexWrap: "wrap",
           }}
         >
-          {/* Left Info Section */}
+     
           <div style={{ flex: "1 1 60%" }}>
             <h2>
               Official Name:{" "}
@@ -175,7 +190,7 @@ const Country = ({ country, handleVisitedCountries }) => {
             </p>
           </div>
 
-          {/* Right Image Section */}
+          
           <div style={{ flex: "1 1 35%", textAlign: "center" }}>
             <h3>
               Coat of Arms of{" "}
@@ -197,7 +212,7 @@ const Country = ({ country, handleVisitedCountries }) => {
           </div>
         </div>
 
-        {/* Close Button */}
+      
         <div
           style={{
             display: "flex",
@@ -207,13 +222,110 @@ const Country = ({ country, handleVisitedCountries }) => {
         >
           <button className="close-btn" onClick={closeModal}> ❌ Close</button>
         </div>
+      </Modal> */}
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Country Details"
+      >
+        <div className="custom-modal">
+          <div className="modal-content">
+            {/* Left Info Section */}
+            <div className="modal-info">
+              <h2>
+                Official Name:{" "}
+                <span style={{ fontSize: "15px" }}>
+                  {country.name.official}
+                </span>
+              </h2>
+              <p>
+                <strong>Region:</strong> {country.region}
+              </p>
+              <p>
+                <strong>Subregion:</strong> {country.subregion}
+              </p>
+              <p>
+                <strong>Languages:</strong> {getLanguages(country.languages)}
+              </p>
+              <p>
+                <strong>Capital Info (lat/lng):</strong>{" "}
+                {country.capitalInfo?.latlng?.join(", ") || "N/A"}
+              </p>
+              <p>
+                <strong>Car Driving Side:</strong> {country.car?.side || "N/A"}
+              </p>
+              <p>
+                <strong>Landlocked:</strong> {country.landlocked ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>Alt Spellings:</strong>{" "}
+                {country.altSpellings?.join(", ")}
+              </p>
+              <p>
+                <strong>Google Maps:</strong>{" "}
+                <a
+                  href={country.maps?.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on Google Maps
+                </a>
+              </p>
+              <p>
+                <strong>Area:</strong> {country.area} km²
+              </p>
+              <p>
+                <strong>Timezones:</strong> {country.timezones.join(", ")}
+              </p>
+              <p>
+                <strong>Continents:</strong> {country.continents.join(", ")}
+              </p>
+              <p>
+                <strong>Start of Week:</strong> {country.startOfWeek}
+              </p>
+            </div>
+
+            <div className="img-and-btn-section">
+              {/* Right Image Section */}
+              <div className="modal-image">
+                <h3>
+                  Coat of Arms of{" "}
+                  <span style={{ color: "green" }}>{country.name.common}</span>
+                </h3>
+                {country.coatOfArms?.png ? (
+                  <img
+                    src={country.coatOfArms.png}
+                    alt="Coat of Arms"
+                    style={{
+                      width: "100%",
+                      maxHeight: "250px",
+                      objectFit: "contain",
+                    }}
+                  />
+                ) : (
+                  <p>No Image Available</p>
+                )}
+              </div>
+
+              <div className="modal-footer-btn-div">
+                <button className="close-btn " onClick={closeModal}>
+                  {" "}
+                  ❌ Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Close Button */}
       </Modal>
 
       {/* country flag modal */}
 
       {isModalOpen && (
         <div className="custom-modal" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content" >
+          <div className="flag-modal-content">
             <h2>{name.common}'s Flag</h2>
             <img
               src={country.flags.png}
@@ -226,7 +338,6 @@ const Country = ({ country, handleVisitedCountries }) => {
           </div>
         </div>
       )}
- 
     </div>
   );
 };

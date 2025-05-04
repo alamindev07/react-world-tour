@@ -18,54 +18,51 @@ const Countries = ({ promiseCountries, handleVisitedCountries }) => {
       ? matchedCountries
       : countries;
 
-
-
   return (
     <div>
       <div className="header-container">
         <h2>Total Country in Here : {countries.length}</h2>
 
-       
-
         <div className="search-box">
-        <div  style={{ position: "relative", width: "100%"}}>
-          <input
-            type="text"
-            placeholder="Search by country name..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            
-            style={{
-              padding: "15px 45px 15px 15px", // leave space for icon
-              width: "100%",
-              boxSizing: "border-box",
-              border: "1px solid green",
-              borderRadius: "10px",
-              fontSize: "20px",
-            }}
-          />
-        
-          {/* Icon only for visual purpose */}
-          <FiSearch
-            size={20}
-            color="green"
-            style={{
-              position: "absolute",
-              right: "15px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              pointerEvents: "none", // don't block input clicks
-            }}
-          />
+          <div style={{ position: "relative", width: "100%" }}>
+            <input
+              type="text"
+              placeholder="Search by country name..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              style={{
+                padding: "15px 45px 15px 15px", // leave space for icon
+                width: "100%",
+                boxSizing: "border-box",
+                border: "1px solid green",
+                borderRadius: "10px",
+                fontSize: "20px",
+              }}
+            />
+
+            {/* Icon only for visual purpose */}
+            <FiSearch
+              size={20}
+              color="green"
+              style={{
+                position: "absolute",
+                right: "15px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                pointerEvents: "none", // don't block input clicks
+              }}
+            />
+          </div>
         </div>
-        </div>
-        
-         
       </div>
 
       <div className="card-grid">
         {filteredCountries.map((country) => (
-          <Country handleVisitedCountries={handleVisitedCountries} key={country.cca3} country={country} />
+          <Country
+            handleVisitedCountries={handleVisitedCountries}
+            key={country.cca3}
+            country={country}
+          />
         ))}
       </div>
     </div>
